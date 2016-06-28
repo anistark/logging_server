@@ -25,7 +25,7 @@ For starters, used mysql for db. But can be replaced with ElasticSearch as to en
 
 1. Add all necessary config data in config.py 
 
-2. Create a database with the provided name and table accordingly.
+2. Create a database with the provided name and table accordingly with the column (client, log_level, message, created_at).
 
 
 ## Execution

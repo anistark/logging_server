@@ -1,0 +1,14 @@
+<table>
+    <th>
+        <tr>Client</tr>
+        <tr>Log Level</tr>
+        <tr>Message</tr>
+    </th>
+    {% for item in data %}
+    <tr>
+        <td>{{ item['client'] }}</td>
+        <td>{{ item['log_level'] }}</td>
+        <td>{{ item['message'] }}</td>
+    </tr>
+    {% endfor %}
+</table>

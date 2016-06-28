@@ -1,0 +1,11 @@
+Flask==0.11.1
+Jinja2==2.8
+MarkupSafe==0.23
+MySQL-python==1.2.5
+Werkzeug==0.11.10
+click==6.6
+itsdangerous==0.24
+peewee==2.8.1
+pyzmq==15.2.0
+wsgiref==0.1.2
+zmq==0.0.0

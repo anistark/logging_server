@@ -44,7 +44,3 @@ def read_logs():
         print e
     db.close()
     return response
-
-
-def get_stats():
-    return 'Something'

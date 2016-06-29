@@ -1,1 +1,82 @@
-{{ data }}
+{% extends "base.html" %}
+{% block title %}Stats{% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+    .demo-card-event.mdl-card {
+        width: 256px;
+        height: 256px;
+        background: #3E4EB8;
+    }
+    .demo-card-event > .mdl-card__actions {
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    .demo-card-event > .mdl-card__title {
+        align-items: flex-start;
+    }
+    .demo-card-event > .mdl-card__title > h4 {
+        margin-top: 0;
+    }
+    .demo-card-event > .mdl-card__actions {
+        display: flex;
+        box-sizing:border-box;
+        align-items: center;
+    }
+    .demo-card-event > .mdl-card__actions > .material-icons {
+        padding-right: 10px;
+    }
+    .demo-card-event > .mdl-card__title,
+    .demo-card-event > .mdl-card__actions,
+    .demo-card-event > .mdl-card__actions > .mdl-button {
+        color: #fff;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<h1>Stats</h1>
+<button id="refreshStats" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+    <i class="material-icons">refresh</i>
+</button>
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col">
+        <div class="demo-card-event mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand">
+                <h4>
+                    CPU Usage<br><br>
+                    <span id="cpuUsage">{{ data.cpu_times.system }}</span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+        <div class="demo-card-event mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand">
+                <h4>
+                    Memory Usage<br><br>
+                    <span id="memoryUsage">{{ data.memory.rss }}</span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+        <div class="demo-card-event mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand">
+                <h4>
+                    Disk Usage<br><br>
+                    <span id="diskUsage">{{ data.disk_usage.percent }}</span> %
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $('#refreshStats').click(function() {
+        $.getJSON('/stats_refresh', {}, function(data) {
+            $('#cpuUsage').text(data.data.cpu_times[2]);
+            $('#memoryUsage').text(data.data.memory[0]);
+            $('#diskUsage').text(data.data.disk_usage[3]);
+        });
+    });
+</script>
+{% endblock %}

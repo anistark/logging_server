@@ -1,14 +1,33 @@
-<table>
-    <th>
-        <tr>Client</tr>
-        <tr>Log Level</tr>
-        <tr>Message</tr>
-    </th>
-    {% for item in data %}
-    <tr>
-        <td>{{ item['client'] }}</td>
-        <td>{{ item['log_level'] }}</td>
-        <td>{{ item['message'] }}</td>
-    </tr>
-    {% endfor %}
-</table>
+{% extends "base.html" %}
+{% block title %}Logs{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<h1>Logs</h1>
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet"></div>
+    <div class="mdl-cell mdl-cell--8-col mdl-cell--10-col-tablet">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Client</th>
+                <th>Log Level</th>
+                <th>Message</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in data %}
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">{{ item['client'] }}</td>
+                <td>{{ item['log_level'] }}</td>
+                <td>{{ item['message'] }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-phone"></div>
+</div>
+
+{% endblock %}

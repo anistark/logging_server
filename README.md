@@ -57,3 +57,7 @@ flask run
 6. To view statistics, go to **localhost:5000/stats**
 
 
+## Server Stats
+
+To view server server stats, just visit **localhost:5000/stats** and the data can be refreshed by clicking on the refresh button.
+
